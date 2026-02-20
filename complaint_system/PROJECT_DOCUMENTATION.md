@@ -84,6 +84,7 @@ This project is a comprehensive **Smart Complaint & Issue Tracking System** desi
 4. **Install Dependencies**: `pip install -r requirements.txt` (Ensure Django, DRF, Pillow, etc. are installed)
 5. **Run Migrations**: `python manage.py migrate`
 6. **Start Server**: `python manage.py runserver`
+7. **Production**: For production deployment, follow the [Deployment Guide](../DEPLOYMENT_GUIDE.md).
 
 ### Frontend
 1. **Navigate to frontend**: `cd frontend`

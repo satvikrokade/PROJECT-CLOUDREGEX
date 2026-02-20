@@ -50,11 +50,13 @@ python manage.py createsuperuser
 python manage.py runserver
 ```
 
-The application will be available at:
-- **Frontend**: Open `static/index.html` in your browser
-- **Admin Panel**: http://localhost:8000/admin/
-- **API**: http://localhost:8000/api/
-- **API Docs**: http://localhost:8000/api/docs/
+The application is available at:
+- **Live Demo**: [https://civic-pulse.pages.dev](https://civic-pulse.pages.dev)
+- **API Endpoint**: [https://civic-pulse-backend.onrender.com/api/](https://civic-pulse-backend.onrender.com/api/)
+- **Admin Panel**: [https://civic-pulse-backend.onrender.com/admin/](https://civic-pulse-backend.onrender.com/admin/)
+- **API Documentation**: [https://civic-pulse-backend.onrender.com/api/docs/](https://civic-pulse-backend.onrender.com/api/docs/)
+
+For detailed launch instructions, see the [Deployment Guide](./DEPLOYMENT_GUIDE.md).
 
 ## Project Structure
 
