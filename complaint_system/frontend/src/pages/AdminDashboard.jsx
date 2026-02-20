@@ -168,7 +168,7 @@ const AdminDashboard = () => {
             <div className="glass surface" style={{ marginBottom: '1rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem' }}>
                 <div>
                     <h1 className="gradient-text" style={{ fontSize: '2.05rem', fontWeight: '800', marginBottom: '0.25rem' }}>
-                        🛠️ Admin Dashboard
+                        Admin Dashboard
                     </h1>
                     <p style={{ color: 'var(--text-secondary)', fontSize: '1rem' }}>
                         Manage complaints, perform data analysis, and manage staff access.
@@ -183,7 +183,7 @@ const AdminDashboard = () => {
                                 fontWeight: '700',
                                 border: '1px solid rgba(59, 130, 246, 0.3)'
                             }}>
-                                🛡️ LIMITED STAFF ACCESS (READ-ONLY)
+                                LIMITED STAFF ACCESS (READ-ONLY)
                             </span>
                         )}
                     </p>
@@ -231,18 +231,17 @@ const AdminDashboard = () => {
                     {stats && (
                         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '0.8rem', marginBottom: '1rem' }}>
                             {[
-                                { label: 'Total', value: stats.total_complaints, color: 'var(--accent-blue)', icon: '📊' },
-                                { label: 'Pending', value: stats.by_status?.pending || 0, color: '#fbbf24', icon: '⏳' },
-                                { label: 'In Progress', value: stats.by_status?.in_progress || 0, color: '#a78bfa', icon: '🔧' },
-                                { label: 'Resolved', value: stats.by_status?.resolved || 0, color: '#34d399', icon: '✅' },
-                                { label: 'Rejected', value: stats.by_status?.rejected || 0, color: '#f87171', icon: '❌' },
+                                { label: 'Total', value: stats.total_complaints, color: 'var(--accent-blue)', icon: '' },
+                                { label: 'Pending', value: stats.by_status?.pending || 0, color: '#fbbf24', icon: '' },
+                                { label: 'In Progress', value: stats.by_status?.in_progress || 0, color: '#a78bfa', icon: '' },
+                                { label: 'Resolved', value: stats.by_status?.resolved || 0, color: '#34d399', icon: '' },
+                                { label: 'Rejected', value: stats.by_status?.rejected || 0, color: '#f87171', icon: '' },
                             ].map((stat) => (
                                 <div
                                     key={stat.label}
                                     className="glass card-hover surface"
                                     style={{ textAlign: 'center' }}
                                 >
-                                    <div style={{ fontSize: '1.3rem', marginBottom: '0.2rem' }}>{stat.icon}</div>
                                     <div style={{ fontSize: '2rem', fontWeight: '800', color: stat.color, marginBottom: '0.15rem' }}>
                                         {stat.value}
                                     </div>
@@ -256,7 +255,7 @@ const AdminDashboard = () => {
                     {stats && stats.by_category && (
                         <div className="glass surface" style={{ marginBottom: '1rem' }}>
                             <h3 className="gradient-text" style={{ marginBottom: '0.8rem', fontSize: '1.2rem' }}>
-                                📂 Complaints by Category
+                                Complaints by Category
                             </h3>
                             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))', gap: '0.6rem' }}>
                                 {Object.entries(stats.by_category).map(([name, count]) => (
@@ -344,7 +343,6 @@ const AdminDashboard = () => {
                             </div>
                         ) : complaints.length === 0 ? (
                             <div style={{ textAlign: 'center', padding: '2.5rem' }}>
-                                <div style={{ fontSize: '3rem', marginBottom: '0.5rem' }}>📭</div>
                                 <p style={{ color: 'var(--text-secondary)' }}>No complaints found</p>
                             </div>
                         ) : (
@@ -388,10 +386,10 @@ const AdminDashboard = () => {
                                                         {c.category_name}
                                                     </td>
                                                     <td style={{ padding: '0.7rem 0.5rem', color: 'var(--text-secondary)', fontSize: '0.85rem' }}>
-                                                        {c.department || '—'}
+                                                        {c.department || '-'}
                                                     </td>
                                                     <td style={{ padding: '0.7rem 0.5rem', color: 'var(--text-secondary)', fontSize: '0.85rem' }}>
-                                                        {c.citizen_name || '—'}
+                                                        {c.citizen_name || '-'}
                                                     </td>
                                                     <td style={{ padding: '0.7rem 0.5rem' }}>
                                                         <span className="priority-pill" style={{
@@ -416,7 +414,7 @@ const AdminDashboard = () => {
                                                     </td>
                                                     <td style={{ padding: '0.7rem 0.5rem' }}>
                                                         <span style={{ color: 'var(--accent-blue)', fontSize: '0.82rem' }}>
-                                                            {expandedId === c.id ? '▲ Close' : (user?.is_staff ? '▼ Manage' : '▼ View')}
+                                                            {expandedId === c.id ? '[^] Close' : (user?.is_staff ? '[v] Manage' : '[v] View')}
                                                         </span>
                                                     </td>
                                                 </tr>
@@ -429,11 +427,11 @@ const AdminDashboard = () => {
                                                                 {/* Citizen Info */}
                                                                 <div>
                                                                     <h4 style={{ fontSize: '0.95rem', marginBottom: '0.5rem', color: 'var(--accent-blue)' }}>
-                                                                        👤 Citizen Details
+                                                                        Citizen Details
                                                                     </h4>
                                                                     <div style={{ fontSize: '0.88rem', color: 'var(--text-secondary)', lineHeight: '1.8' }}>
-                                                                        <div><strong>Name:</strong> {c.citizen_name || '—'}</div>
-                                                                        <div><strong>Email:</strong> {c.citizen_email || '—'}</div>
+                                                                        <div><strong>Name:</strong> {c.citizen_name || '-'}</div>
+                                                                        <div><strong>Email:</strong> {c.citizen_email || '-'}</div>
                                                                         {c.address && <div><strong>Address:</strong> {c.address}</div>}
                                                                         {c.latitude && c.longitude && (
                                                                             <div><strong>Location:</strong> {c.latitude}, {c.longitude}</div>
@@ -444,7 +442,7 @@ const AdminDashboard = () => {
                                                                 {/* Admin Actions */}
                                                                 <div>
                                                                     <h4 style={{ fontSize: '0.95rem', marginBottom: '0.5rem', color: 'var(--accent-blue)' }}>
-                                                                        {user?.is_staff ? '⚙️ Update Complaint' : '📋 Status Information'}
+                                                                        {user?.is_staff ? 'Update Complaint' : 'Status Information'}
                                                                     </h4>
                                                                     {user?.is_staff ? (
                                                                         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
@@ -531,7 +529,7 @@ const AdminDashboard = () => {
                 <div className="glass surface">
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem', flexWrap: 'wrap', gap: '1rem' }}>
                         <h2 className="gradient-text" style={{ fontSize: '1.5rem' }}>
-                            👥 Manage Staff & Access
+                            Manage Staff & Access
                         </h2>
                         <div style={{ display: 'flex', gap: '0.8rem', alignItems: 'center' }}>
                             {showStaffOnly ? (
@@ -544,7 +542,7 @@ const AdminDashboard = () => {
                                         fontWeight: '600', display: 'flex', alignItems: 'center', gap: '0.4rem'
                                     }}
                                 >
-                                    ➕ Add New Staff
+                                    Add New Staff
                                 </button>
                             ) : (
                                 <button
@@ -556,7 +554,7 @@ const AdminDashboard = () => {
                                         cursor: 'pointer', fontWeight: '600'
                                     }}
                                 >
-                                    ⬅️ Back to Staff List
+                                    Back to Staff List
                                 </button>
                             )}
                             <button
@@ -567,14 +565,14 @@ const AdminDashboard = () => {
                                     border: 'none', cursor: 'pointer'
                                 }}
                             >
-                                🔄 Refresh
+                                Refresh
                             </button>
                         </div>
                     </div>
 
                     {!showStaffOnly && (
                         <div style={{ marginBottom: '1rem', padding: '0.8rem', background: 'rgba(52, 211, 153, 0.1)', borderRadius: '8px', borderLeft: '3px solid #34d399', color: 'var(--text-secondary)', fontSize: '0.9rem' }}>
-                            💡 <strong>To add staff:</strong> Find a user in the list below and click <strong>"Grant Access"</strong> within the <em>Actions</em> column. You can also assign them a department.
+                            <strong>To add staff:</strong> Find a user in the list below and click <strong>"Grant Access"</strong> within the <em>Actions</em> column. You can also assign them a department.
                         </div>
                     )}
 
@@ -619,7 +617,7 @@ const AdminDashboard = () => {
                                                 disabled={false}
                                                 style={{ padding: '0.4rem', borderRadius: '6px', fontSize: '0.9rem' }}
                                             >
-                                                <option value="">— No Dept —</option>
+                                                <option value="">- No Dept -</option>
                                                 {departments.map(d => (
                                                     <option key={d} value={d}>{d}</option>
                                                 ))}

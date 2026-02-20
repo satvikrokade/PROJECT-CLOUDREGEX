@@ -151,7 +151,7 @@ const SubmitComplaint = () => {
                         &larr; Back
                     </button>
                     <h1 className="gradient-text" style={{ fontSize: '2.5rem', marginBottom: '0.5rem' }}>
-                        🏛️ Submit a Complaint
+                        Submit a Complaint
                     </h1>
                     <p style={{ color: 'var(--text-secondary)' }}>
                         Report issues and track their resolution with transparency
@@ -222,7 +222,6 @@ const SubmitComplaint = () => {
                                             }}
                                         >
                                             <span style={{ fontSize: '1.3rem', display: 'block', marginBottom: '0.2rem' }}>
-                                                {cat.icon || '📋'}
                                             </span>
                                             {cat.name}
                                         </button>
@@ -306,7 +305,7 @@ const SubmitComplaint = () => {
                                             style={{ maxWidth: '100%', maxHeight: '200px', borderRadius: '10px' }}
                                         />
                                     ) : (
-                                        <span style={{ color: 'rgba(255,255,255,0.5)' }}>📸 Click to upload photo</span>
+                                        <span style={{ color: 'rgba(255,255,255,0.5)' }}>Click to upload photo</span>
                                     )}
                                 </div>
                             </div>
@@ -317,7 +316,7 @@ const SubmitComplaint = () => {
                                 disabled={loading}
                                 style={{ width: '100%', opacity: loading ? 0.6 : 1 }}
                             >
-                                {loading ? 'Submitting...' : '🚀 Submit Complaint'}
+                                {loading ? 'Submitting...' : 'Submit Complaint'}
                             </button>
                         </form>
                     </div>
@@ -343,7 +342,7 @@ const SubmitComplaint = () => {
                                 fontSize: '0.95rem',
                             }}
                         >
-                            📍 Use My Current Location
+                            Use My Current Location
                         </button>
 
                         {/* Lat / Lng inputs */}
@@ -374,7 +373,7 @@ const SubmitComplaint = () => {
                                 marginBottom: '1.5rem',
                                 color: '#34d399',
                             }}>
-                                ✅ Location set: {locationInput.lat}, {locationInput.lng}
+                                Location set: {locationInput.lat}, {locationInput.lng}
                             </div>
                         )}
 
@@ -399,7 +398,7 @@ const SubmitComplaint = () => {
                             color: 'rgba(255,255,255,0.6)',
                             lineHeight: '1.5',
                         }}>
-                            <strong style={{ color: 'rgba(255,255,255,0.8)' }}>💡 Tip:</strong> Click "Use My Current Location" to auto-detect your GPS coordinates, or enter them manually.
+                            <strong style={{ color: 'rgba(255,255,255,0.8)' }}>Tip:</strong> Click "Use My Current Location" to auto-detect your GPS coordinates, or enter them manually.
                         </div>
                     </div>
                 </div>

@@ -93,7 +93,6 @@ const DeptDashboard = () => {
         return (
             <div style={{ minHeight: 'calc(100vh - 70px)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                 <div className="glass surface" style={{ textAlign: 'center', padding: '3rem' }}>
-                    <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>⚠️</div>
                     <h2 style={{ color: 'var(--text-primary)' }}>No Department Assigned</h2>
                     <p style={{ color: 'var(--text-secondary)' }}>Your account is not linked to any department.</p>
                 </div>
@@ -108,7 +107,7 @@ const DeptDashboard = () => {
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '0.5rem' }}>
                     <div>
                         <h1 className="gradient-text" style={{ fontSize: '2rem', fontWeight: '800', marginBottom: '0.25rem' }}>
-                            🏛️ Department Dashboard
+                            Department Dashboard
                         </h1>
                         <p style={{ color: 'var(--text-secondary)', fontSize: '1rem' }}>
                             Manage complaints for your department
@@ -123,7 +122,7 @@ const DeptDashboard = () => {
                         fontWeight: '700',
                         color: 'var(--accent-blue)',
                     }}>
-                        📌 {department}
+                        {department}
                     </div>
                 </div>
             </div>
@@ -131,13 +130,12 @@ const DeptDashboard = () => {
             {/* Quick Stats */}
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))', gap: '0.8rem', marginBottom: '1rem' }}>
                 {[
-                    { label: 'Total', value: complaints.length, color: 'var(--accent-blue)', icon: '📊' },
-                    { label: 'Pending', value: complaints.filter(c => c.status === 'pending').length, color: '#fbbf24', icon: '⏳' },
-                    { label: 'In Progress', value: complaints.filter(c => c.status === 'in_progress').length, color: '#a78bfa', icon: '🔧' },
-                    { label: 'Resolved', value: complaints.filter(c => c.status === 'resolved').length, color: '#34d399', icon: '✅' },
+                    { label: 'Total', value: complaints.length, color: 'var(--accent-blue)', icon: '' },
+                    { label: 'Pending', value: complaints.filter(c => c.status === 'pending').length, color: '#fbbf24', icon: '' },
+                    { label: 'In Progress', value: complaints.filter(c => c.status === 'in_progress').length, color: '#a78bfa', icon: '' },
+                    { label: 'Resolved', value: complaints.filter(c => c.status === 'resolved').length, color: '#34d399', icon: '' },
                 ].map((stat) => (
                     <div key={stat.label} className="glass card-hover surface" style={{ textAlign: 'center' }}>
-                        <div style={{ fontSize: '1.3rem', marginBottom: '0.2rem' }}>{stat.icon}</div>
                         <div style={{ fontSize: '2rem', fontWeight: '800', color: stat.color }}>{stat.value}</div>
                         <div style={{ color: 'var(--text-secondary)', fontSize: '0.9rem' }}>{stat.label}</div>
                     </div>
@@ -168,7 +166,6 @@ const DeptDashboard = () => {
                     </div>
                 ) : complaints.length === 0 ? (
                     <div style={{ textAlign: 'center', padding: '2.5rem' }}>
-                        <div style={{ fontSize: '3rem', marginBottom: '0.5rem' }}>📭</div>
                         <p style={{ color: 'var(--text-secondary)' }}>No complaints assigned to your department</p>
                     </div>
                 ) : (
@@ -208,7 +205,7 @@ const DeptDashboard = () => {
                                                 {c.category_name}
                                             </td>
                                             <td style={{ padding: '0.7rem 0.5rem', color: 'var(--text-secondary)', fontSize: '0.85rem' }}>
-                                                {c.citizen_name || '—'}
+                                                {c.citizen_name || '-'}
                                             </td>
                                             <td style={{ padding: '0.7rem 0.5rem' }}>
                                                 <span className="priority-pill" style={{
@@ -232,7 +229,7 @@ const DeptDashboard = () => {
                                             </td>
                                             <td style={{ padding: '0.7rem 0.5rem' }}>
                                                 <span style={{ color: 'var(--accent-blue)', fontSize: '0.82rem' }}>
-                                                    {expandedId === c.id ? '▲ Close' : '▼ Manage'}
+                                                    {expandedId === c.id ? '[^] Close' : '[v] Manage'}
                                                 </span>
                                             </td>
                                         </tr>
@@ -243,17 +240,17 @@ const DeptDashboard = () => {
                                                     <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
                                                         <div>
                                                             <h4 style={{ fontSize: '0.95rem', marginBottom: '0.5rem', color: 'var(--accent-blue)' }}>
-                                                                👤 Citizen Details
+                                                                Citizen Details
                                                             </h4>
                                                             <div style={{ fontSize: '0.88rem', color: 'var(--text-secondary)', lineHeight: '1.8' }}>
-                                                                <div><strong>Name:</strong> {c.citizen_name || '—'}</div>
-                                                                <div><strong>Email:</strong> {c.citizen_email || '—'}</div>
+                                                                <div><strong>Name:</strong> {c.citizen_name || '-'}</div>
+                                                                <div><strong>Email:</strong> {c.citizen_email || '-'}</div>
                                                                 {c.address && <div><strong>Address:</strong> {c.address}</div>}
                                                             </div>
                                                         </div>
                                                         <div>
                                                             <h4 style={{ fontSize: '0.95rem', marginBottom: '0.5rem', color: 'var(--accent-blue)' }}>
-                                                                ⚙️ Update Complaint
+                                                                Update Complaint
                                                             </h4>
                                                             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
                                                                 <div>

@@ -29,7 +29,7 @@ const Navbar = () => {
                         whileHover={{ scale: 1.05 }}
                         style={{ fontSize: '1.15rem', fontWeight: '800', display: 'flex', alignItems: 'center', gap: '0.5rem' }}
                     >
-                        <span>🏛️ CivicPulse</span>
+                        <span>CivicPulse</span>
                         <span
                             style={{
                                 fontSize: '0.67rem',
@@ -58,7 +58,7 @@ const Navbar = () => {
                                     Dashboard
                                 </motion.button>
                             </Link>
-                            <span style={{ color: 'var(--text-secondary)', fontSize: '0.88rem' }}>👤 {user.username}</span>
+                            <span style={{ color: 'var(--text-secondary)', fontSize: '0.88rem' }}>{user.username}</span>
                             <motion.button
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}

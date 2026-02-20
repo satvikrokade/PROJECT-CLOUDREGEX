@@ -43,15 +43,7 @@ const UserDashboard = () => {
     };
 
     const getStatusIcon = (status) => {
-        const icons = {
-            pending: '⏳',
-            acknowledged: '👁️',
-            in_progress: '🔧',
-            resolved: '✅',
-            closed: '🔒',
-            rejected: '❌',
-        };
-        return icons[status] || '📋';
+        return '';
     };
 
     const getPriorityColor = (priority) => {
@@ -82,7 +74,7 @@ const UserDashboard = () => {
                 style={{ marginBottom: '1rem' }}
             >
                 <h1 className="gradient-text" style={{ fontSize: '2.05rem', fontWeight: '800', marginBottom: '0.3rem' }}>
-                    Citizen Dashboard · {user?.first_name || user?.username || 'Guest'}
+                    Dashboard | {user?.first_name || user?.username || 'Guest'}
                 </h1>
                 <p style={{ color: 'var(--text-secondary)', fontSize: '1rem' }}>
                     Track all complaints, monitor progress, and submit new issues.
@@ -97,7 +89,6 @@ const UserDashboard = () => {
                     style={{ textAlign: 'center', cursor: 'pointer' }}
                     onClick={() => navigate('/submit-complaint')}
                 >
-                    <div style={{ fontSize: '2.2rem', marginBottom: '0.5rem' }}>📝</div>
                     <h3 className="gradient-text" style={{ fontSize: '1.2rem', marginBottom: '0.6rem' }}>
                         Submit New Complaint
                     </h3>
@@ -110,17 +101,16 @@ const UserDashboard = () => {
                 </div>
 
                 {[
-                    { label: 'Total', value: stats.total, sub: 'submitted complaints', icon: '📊' },
-                    { label: 'Open', value: stats.open, sub: 'currently active', icon: '🔔' },
-                    { label: 'Resolved', value: stats.resolved, sub: 'completed cases', icon: '✅' },
+                    { label: 'Total', value: stats.total, sub: 'submitted complaints', icon: '' },
+                    { label: 'Open', value: stats.open, sub: 'currently active', icon: '' },
+                    { label: 'Resolved', value: stats.resolved, sub: 'completed cases', icon: '' },
                 ].map((item) => (
                     <div
                         key={item.label}
                         className="glass surface card-hover"
                         style={{ textAlign: 'center' }}
                     >
-                        <div style={{ fontSize: '1.5rem', marginBottom: '0.3rem' }}>{item.icon}</div>
-                        <div className="gradient-text" style={{ fontSize: '2rem', fontWeight: '800' }}>
+                        <div className="gradient-text" style={{ fontSize: '2.2rem', fontWeight: '800' }}>
                             {item.value}
                         </div>
                         <div style={{ color: 'var(--text-primary)', fontWeight: '600' }}>{item.label}</div>
@@ -152,7 +142,7 @@ const UserDashboard = () => {
             <div className="glass surface">
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '0.8rem', flexWrap: 'wrap', marginBottom: '0.9rem' }}>
                     <h2 className="gradient-text" style={{ fontSize: '1.5rem' }}>
-                        📊 All Complaints
+                        All Complaints
                     </h2>
                     <div style={{ display: 'flex', gap: '0.4rem', flexWrap: 'wrap' }}>
                         {statusOptions.map((status) => (
@@ -178,7 +168,6 @@ const UserDashboard = () => {
                     </div>
                 ) : filteredComplaints.length === 0 ? (
                     <div style={{ textAlign: 'center', padding: '2.5rem' }}>
-                        <div style={{ fontSize: '4rem', marginBottom: '1rem' }}>📭</div>
                         <p style={{ color: 'var(--text-secondary)', fontSize: '1rem' }}>
                             No complaints found.
                         </p>
@@ -245,21 +234,21 @@ const UserDashboard = () => {
                                     }}>
                                         {complaint.address && (
                                             <div style={{ marginBottom: '0.4rem', color: 'var(--text-secondary)' }}>
-                                                <strong>📍 Address:</strong> {complaint.address}
+                                                <strong>Address:</strong> {complaint.address}
                                             </div>
                                         )}
                                         {complaint.citizen_email && (
                                             <div style={{ marginBottom: '0.4rem', color: 'var(--text-secondary)' }}>
-                                                <strong>📧 Email:</strong> {complaint.citizen_email}
+                                                <strong>Email:</strong> {complaint.citizen_email}
                                             </div>
                                         )}
                                         {complaint.latitude && complaint.longitude && (
                                             <div style={{ color: 'var(--text-muted)' }}>
-                                                <strong>🌐 Coords:</strong> {complaint.latitude}, {complaint.longitude}
+                                                <strong>Coordinates:</strong> {complaint.latitude}, {complaint.longitude}
                                             </div>
                                         )}
                                         <div style={{ marginTop: '0.4rem', color: 'var(--text-muted)' }}>
-                                            <strong>🕐 Updated:</strong> {new Date(complaint.updated_at).toLocaleString()}
+                                            <strong>Updated:</strong> {new Date(complaint.updated_at).toLocaleString()}
                                         </div>
                                     </div>
                                 )}

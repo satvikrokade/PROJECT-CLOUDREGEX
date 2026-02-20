@@ -105,7 +105,7 @@ const DeptRegister = () => {
                     className="gradient-text"
                     style={{ fontSize: '1.8rem', fontWeight: '800', marginBottom: '0.4rem', textAlign: 'center' }}
                 >
-                    🏛️ Department Registration
+                    Department Registration
                 </motion.h2>
 
                 <p style={{ textAlign: 'center', color: 'var(--text-secondary)', marginBottom: '1.5rem', fontSize: '0.9rem' }}>
@@ -180,7 +180,7 @@ const DeptRegister = () => {
                         className="gradient-btn"
                         style={{ width: '100%', padding: '0.9rem', fontSize: '1rem' }}
                     >
-                        {loading ? 'Registering...' : '🏛️ Register as Department Staff'}
+                        {loading ? 'Registering...' : 'Register as Department Staff'}
                     </motion.button>
                 </form>
 

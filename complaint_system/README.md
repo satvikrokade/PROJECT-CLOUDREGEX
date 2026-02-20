@@ -2,24 +2,24 @@
 
 A transparent e-governance platform for municipal complaint management with geolocation tracking, automated routing, and real-time status updates.
 
-## 🌟 Features
+## Features
 
-✅ **Complaint Submission** - Citizens can submit complaints with photos and GPS location  
-✅ **Category-based Routing** - Automatic classification into 8 municipal categories  
-✅ **Status Tracking** - Real-time updates with complete transparency  
-✅ **Admin Workflow** - Enhanced Django admin with colored badges and bulk actions  
-✅ **Citizen Feedback** - Satisfaction ratings after resolution  
-✅ **Email Notifications** - Automated alerts for status changes  
-✅ **Interactive Maps** - Leaflet.js integration for location-based complaints  
-✅ **REST API** - Full API with Swagger documentation  
-✅ **Nearby Search** - Find complaints within a specified radius  
+**Complaint Submission** - Citizens can submit complaints with photos and GPS location  
+**Category-based Routing** - Automatic classification into 8 municipal categories  
+**Status Tracking** - Real-time updates with complete transparency  
+**Admin Workflow** - Enhanced Django admin with colored badges and bulk actions  
+**Citizen Feedback** - Satisfaction ratings after resolution  
+**Email Notifications** - Automated alerts for status changes  
+**Interactive Maps** - Leaflet.js integration for location-based complaints  
+**REST API** - Full API with Swagger documentation  
+**Nearby Search** - Find complaints within a specified radius  
 
-## 📋 Prerequisites
+## Prerequisites
 
 - Python 3.8 or higher
 - pip (Python package manager)
 
-## 🚀 Quick Start
+## Quick Start
 
 ### 1. Installation
 
@@ -56,7 +56,7 @@ The application will be available at:
 - **API**: http://localhost:8000/api/
 - **API Docs**: http://localhost:8000/api/docs/
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 complaint_system/
@@ -78,7 +78,7 @@ complaint_system/
 └── requirements.txt            # Dependencies
 ```
 
-## 🎯 Usage Guide
+## Usage Guide
 
 ### For Citizens
 
@@ -114,7 +114,7 @@ complaint_system/
    - Dashboard shows complaint statistics
    - Filter by date, category, status
 
-## 🔌 API Endpoints
+## API Endpoints
 
 ### Categories
 - `GET /api/categories/` - List all categories
@@ -134,7 +134,7 @@ complaint_system/
 - `?priority=high` - Filter by priority
 - `?search=road` - Search in title/description
 
-## 📧 Email Configuration
+## Email Configuration
 
 The system uses email notifications for:
 - New complaint submission (to admin)
@@ -153,7 +153,7 @@ EMAIL_HOST_USER=your-email@gmail.com
 EMAIL_HOST_PASSWORD=your-app-password
 ```
 
-## 🗺️ Geolocation Features
+## Geolocation Features
 
 The system uses latitude/longitude coordinates for location tracking:
 - Citizens can click on the map to set location
@@ -161,18 +161,18 @@ The system uses latitude/longitude coordinates for location tracking:
 - Nearby complaints search using Haversine formula
 - Address field for additional context
 
-## 🎨 Complaint Categories
+## Complaint Categories
 
-1. **Roads & Infrastructure** 🛣️ - Potholes, damaged roads, street lights
-2. **Water Supply** 💧 - Water shortage, leakage, quality issues
-3. **Electricity** ⚡ - Power outages, damaged poles
-4. **Sanitation & Waste** 🗑️ - Garbage collection, drainage
-5. **Public Safety** 🚨 - Crime, traffic violations
-6. **Parks & Recreation** 🌳 - Park maintenance
-7. **Building & Construction** 🏗️ - Illegal construction
-8. **Other** 📋 - Other municipal issues
+1. **Roads & Infrastructure** - Potholes, damaged roads, street lights
+2. **Water Supply** - Water shortage, leakage, quality issues
+3. **Electricity** - Power outages, damaged poles
+4. **Sanitation & Waste** - Garbage collection, drainage
+5. **Public Safety** - Crime, traffic violations
+6. **Parks & Recreation** - Park maintenance
+7. **Building & Construction** - Illegal construction
+8. **Other** - Other municipal issues
 
-## 📊 Status Workflow
+## Status Workflow
 
 1. **Pending** - Initial submission
 2. **Acknowledged** - Received and reviewed
@@ -181,7 +181,7 @@ The system uses latitude/longitude coordinates for location tracking:
 5. **Closed** - Completed with feedback
 6. **Rejected** - Not actionable
 
-## 🔐 Security Notes
+## Security Notes
 
 - Change `SECRET_KEY` in production
 - Set `DEBUG=False` in production
@@ -189,7 +189,7 @@ The system uses latitude/longitude coordinates for location tracking:
 - Use HTTPS for production deployment
 - Implement rate limiting for API endpoints
 
-## 🚀 Deployment
+## Deployment
 
 For production deployment:
 
@@ -200,18 +200,18 @@ For production deployment:
 5. Configure SSL certificates
 6. Set up database backups
 
-## 🤝 Contributing
+## Contributing
 
 This is an e-governance transparency system designed for municipal complaint management.
 
-## 📄 License
+## License
 
 MIT License
 
-## 📞 Support
+## Support
 
 For issues or questions, contact: admin@complaints.gov.in
 
 ---
 
-**Built with Django, Django REST Framework, and Leaflet.js for transparent e-governance** 🏛️
+**Built with Django, Django REST Framework, and Leaflet.js for transparent e-governance**

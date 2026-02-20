@@ -71,20 +71,6 @@ const DeptLogin = () => {
 
                 {/* Dept Badge */}
                 <div style={{ textAlign: 'center', marginBottom: '1.5rem' }}>
-                    <motion.div
-                        initial={{ scale: 0 }}
-                        animate={{ scale: 1 }}
-                        transition={{ type: 'spring', stiffness: 200, delay: 0.1 }}
-                        style={{
-                            width: '70px', height: '70px', borderRadius: '50%',
-                            background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-                            display: 'flex', alignItems: 'center', justifyContent: 'center',
-                            margin: '0 auto 1rem', fontSize: '2rem',
-                            boxShadow: '0 8px 32px rgba(102, 126, 234, 0.35)',
-                        }}
-                    >
-                        🏛️
-                    </motion.div>
                     <h2 className="gradient-text" style={{ fontSize: '1.8rem', fontWeight: '800', marginBottom: '0.3rem' }}>
                         Department Login
                     </h2>
@@ -139,7 +125,7 @@ const DeptLogin = () => {
                             boxShadow: '0 4px 15px rgba(102, 126, 234, 0.3)',
                         }}
                     >
-                        {loading ? 'Signing in...' : '🏛️ Sign In as Department Staff'}
+                        {loading ? 'Signing in...' : 'Sign In as Department Staff'}
                     </motion.button>
                 </form>
 

@@ -106,22 +106,22 @@ const LandingPage = () => {
 
     const features = [
         {
-            icon: '🛰️',
-            title: 'Smart Intake',
+            icon: '',
+            title: 'Integrated Intake',
             description: 'Structured forms collect category, location, and impact details in one smooth flow.',
         },
         {
-            icon: '📍',
+            icon: '',
             title: 'Geo-focused Tracking',
             description: 'Pinpoint where an issue happened so teams can triage and dispatch faster.',
         },
         {
-            icon: '🔁',
+            icon: '',
             title: 'Real-time Status',
             description: 'See movement from pending to resolved with transparent stage updates.',
         },
         {
-            icon: '🧠',
+            icon: '',
             title: 'Action Insights',
             description: 'Dashboards summarize trend hotspots and performance for better decisions.',
         },
@@ -170,9 +170,9 @@ const LandingPage = () => {
                             ease: 'linear',
                         }}
                     >
-                        Design-forward Municipal
+                        Management System for
                         <br />
-                        Complaint Experience
+                        Municipal Complaints
                     </motion.h1>
 
                     <motion.p
@@ -201,7 +201,7 @@ const LandingPage = () => {
                                 )}
                                 style={{ fontSize: '1.2rem', padding: '1.2rem 3rem' }}
                             >
-                                🚀 Go to Dashboard
+                                Go to Dashboard
                             </motion.button>
                         </motion.div>
                     ) : (
@@ -217,10 +217,10 @@ const LandingPage = () => {
                             }}
                         >
                             {[
-                                { icon: '👤', title: 'Citizen Login', sub: 'Report & track issues', to: '/login' },
-                                { icon: '📝', title: 'Register', sub: 'Create a new account', to: '/register' },
-                                { icon: '🏛️', title: 'Department', sub: 'Manage your dept cases', to: '/dept-login' },
-                                { icon: '🔐', title: 'Admin Panel', sub: 'Oversee all operations', to: '/admin-login' },
+                                { icon: '', title: 'Citizen Login', sub: 'Report & track issues', to: '/login' },
+                                { icon: '', title: 'Register', sub: 'Create a new account', to: '/register' },
+                                { icon: '', title: 'Department', sub: 'Manage assigned cases', to: '/dept-login' },
+                                { icon: '', title: 'Admin Panel', sub: 'Oversee all operations', to: '/admin-login' },
                             ].map((item, i) => (
                                 <Link key={i} to={item.to} style={{ textDecoration: 'none' }}>
                                     <motion.div
@@ -251,7 +251,6 @@ const LandingPage = () => {
                                             borderRadius: '18px 18px 0 0',
                                             opacity: 0.7,
                                         }} />
-                                        <div style={{ fontSize: '2.2rem', marginBottom: '0.7rem' }}>{item.icon}</div>
                                         <div style={{ fontWeight: '700', fontSize: '1.05rem', color: 'var(--text-primary)', marginBottom: '0.3rem' }}>
                                             {item.title}
                                         </div>
@@ -306,20 +305,6 @@ const LandingPage = () => {
                                 padding: '2.5rem 2rem',
                             }}
                         >
-                            <motion.div
-                                animate={{ rotate: [0, 10, -10, 0] }}
-                                transition={{
-                                    duration: 2,
-                                    repeat: Infinity,
-                                    repeatDelay: 3,
-                                }}
-                                style={{
-                                    fontSize: '3.5rem',
-                                    marginBottom: '1.2rem',
-                                }}
-                            >
-                                {feature.icon}
-                            </motion.div>
                             <h3
                                 className="gradient-text"
                                 style={{
@@ -349,7 +334,7 @@ const LandingPage = () => {
                     }}
                 >
                     <div className="glass surface" style={{ borderRadius: '18px', padding: '2rem' }}>
-                        <h3 className="gradient-text" style={{ marginBottom: '1.5rem', fontSize: '1.7rem' }}>How It Flows</h3>
+                        <h3 className="gradient-text" style={{ marginBottom: '1.5rem', fontSize: '1.7rem' }}>Service Workflow</h3>
                         <div style={{ display: 'grid', gap: '1.2rem' }}>
                             {timeline.map((step, index) => (
                                 <motion.div
@@ -373,13 +358,13 @@ const LandingPage = () => {
                     </div>
 
                     <div className="glass surface" style={{ borderRadius: '18px', padding: '2rem' }}>
-                        <h3 className="gradient-text" style={{ marginBottom: '1.5rem', fontSize: '1.7rem' }}>Why Citizens Prefer It</h3>
+                        <h3 className="gradient-text" style={{ marginBottom: '1.5rem', fontSize: '1.7rem' }}>System Benefits</h3>
                         <ul style={{ display: 'grid', gap: '1.2rem', listStyle: 'none' }}>
                             {[
                                 'Single-window complaint lifecycle',
-                                'Fast issue acknowledgment visibility',
+                                'Official issue acknowledgment',
                                 'Consistent department communication',
-                                'Better trust through transparent status',
+                                'Transparent status tracking',
                             ].map((item) => (
                                 <li
                                     key={item}
@@ -391,7 +376,7 @@ const LandingPage = () => {
                                         fontSize: '1.1rem',
                                     }}
                                 >
-                                    ✨ {item}
+                                    {item}
                                 </li>
                             ))}
                         </ul>

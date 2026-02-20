@@ -145,7 +145,7 @@ const Login = () => {
                     <Link to="/dept-login" style={{ color: '#667eea', textDecoration: 'none', fontWeight: '600' }}>
                         Department Login
                     </Link>
-                    {' · '}
+                    {' | '}
                     Admin?{' '}
                     <Link to="/admin-login" style={{ color: '#ef4444', textDecoration: 'none', fontWeight: '600' }}>
                         Admin Login
