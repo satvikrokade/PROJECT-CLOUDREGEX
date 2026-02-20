@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Municipal Complaint System - Submit Complaint</title>
+
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+            animation: fadeInDown 0.8s ease;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .card h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 500;
+        }
+
+        input,
+        textarea,
+        select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e5e7eb;
+            border-radius: 10px;
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        input:focus,
+        textarea:focus,
+        select:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .category-btn {
+            padding: 15px;
+            border: 2px solid #e5e7eb;
+            border-radius: 10px;
+            background: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        .category-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .category-btn.active {
+            border-color: #667eea;
+            background: #667eea;
+            color: white;
+        }
+
+        .category-icon {
+            font-size: 24px;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        #map {
+            height: 300px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .location-info {
+            background: #f3f4f6;
+            padding: 10px 15px;
+            border-radius: 8px;
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-secondary {
+            background: #f3f4f6;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .btn-secondary:hover {
+            background: #e5e7eb;
+        }
+
+        .file-upload {
+            border: 2px dashed #e5e7eb;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .file-upload:hover {
+            border-color: #667eea;
+            background: #f9fafb;
+        }
+
+        .file-upload input {
+            display: none;
+        }
+
+        .preview-image {
+            max-width: 100%;
+            max-height: 200px;
+            border-radius: 10px;
+            margin-top: 10px;
+        }
+
+        .success-message {
+            background: #10b981;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            display: none;
+        }
+
+        .error-message {
+            background: #ef4444;
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            display: none;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+
+            .header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🏛️ Municipal Complaint System</h1>
+            <p>Report issues and track their resolution with transparency</p>
+        </div>
+
+        <div class="main-content">
+            <!-- Complaint Form -->
+            <div class="card">
+                <h2>Submit a Complaint</h2>
+
+                <div class="error-message" id="errorMessage"></div>
+                <div class="success-message" id="successMessage"></div>
+
+                <form id="complaintForm">
+                    <div class="form-group">
+                        <label>Category *</label>
+                        <div class="category-grid" id="categoryGrid">
+                            <!-- Categories will be loaded here -->
+                        </div>
+                        <input type="hidden" id="categoryId" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="title">Title *</label>
+                        <input type="text" id="title" placeholder="Brief description of the issue" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="description">Description *</label>
+                        <textarea id="description" placeholder="Provide detailed information about the issue"
+                            required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="citizenName">Your Name *</label>
+                        <input type="text" id="citizenName" placeholder="Full name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="citizenEmail">Email *</label>
+                        <input type="email" id="citizenEmail" placeholder="your.email@example.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="citizenPhone">Phone (Optional)</label>
+                        <input type="tel" id="citizenPhone" placeholder="+91 1234567890">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Upload Photo (Optional)</label>
+                        <div class="file-upload" onclick="document.getElementById('photoInput').click()">
+                            <input type="file" id="photoInput" accept="image/*">
+                            <span id="fileLabel">📸 Click to upload photo</span>
+                            <img id="photoPreview" class="preview-image" style="display: none;">
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Submit Complaint</button>
+                </form>
+            </div>
+
+            <!-- Location Picker -->
+            <div class="card">
+                <h2>Location</h2>
+
+                <button type="button" class="btn btn-secondary" onclick="getCurrentLocation()">
+                    📍 Use My Current Location
+                </button>
+
+                <div id="map"></div>
+
+                <div class="location-info" id="locationInfo">
+                    Click on the map or use your current location
+                </div>
+
+                <div class="form-group">
+                    <label for="address">Address (Optional)</label>
+                    <textarea id="address" placeholder="Street address or landmark"></textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <script>
+        const API_BASE = 'http://localhost:8000/api';
+        let selectedCategory = null;
+        let selectedLocation = null;
+        let map, marker;
+
+        // Initialize map
+        function initMap() {
+            map = L.map('map').setView([28.6139, 77.2090], 12); // Default: New Delhi
+
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '© OpenStreetMap contributors'
+            }).addTo(map);
+
+            map.on('click', function (e) {
+                setLocation(e.latlng.lat, e.latlng.lng);
+            });
+        }
+
+        // Set location on map
+        function setLocation(lat, lng) {
+            selectedLocation = { lat, lng };
+
+            if (marker) {
+                map.removeLayer(marker);
+            }
+
+            marker = L.marker([lat, lng]).addTo(map);
+            document.getElementById('locationInfo').innerHTML = `
+                📍 Selected: ${lat.toFixed(6)}, ${lng.toFixed(6)}
+            `;
+        }
+
+        // Get current location
+        function getCurrentLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(
+                    (position) => {
+                        const lat = position.coords.latitude;
+                        const lng = position.coords.longitude;
+                        map.setView([lat, lng], 15);
+                        setLocation(lat, lng);
+                    },
+                    (error) => {
+                        showError('Unable to get your location. Please click on the map.');
+                    }
+                );
+            } else {
+                showError('Geolocation is not supported by your browser.');
+            }
+        }
+
+        // Load categories
+        async function loadCategories() {
+            try {
+                const response = await fetch(`${API_BASE}/categories/`);
+                const categories = await response.json();
+
+                const grid = document.getElementById('categoryGrid');
+                grid.innerHTML = categories.map(cat => `
+                    <button type="button" class="category-btn" onclick="selectCategory(${cat.id}, '${cat.name}')" data-id="${cat.id}">
+                        <span class="category-icon">${cat.icon}</span>
+                        <span>${cat.name}</span>
+                    </button>
+                `).join('');
+            } catch (error) {
+                showError('Failed to load categories');
+            }
+        }
+
+        // Select category
+        function selectCategory(id, name) {
+            selectedCategory = id;
+            document.getElementById('categoryId').value = id;
+
+            document.querySelectorAll('.category-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.querySelector(`[data-id="${id}"]`).classList.add('active');
+        }
+
+        // Photo preview
+        document.getElementById('photoInput').addEventListener('change', function (e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    const preview = document.getElementById('photoPreview');
+                    preview.src = e.target.result;
+                    preview.style.display = 'block';
+                    document.getElementById('fileLabel').textContent = file.name;
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // Submit form
+        document.getElementById('complaintForm').addEventListener('submit', async function (e) {
+            e.preventDefault();
+
+            if (!selectedCategory) {
+                showError('Please select a category');
+                return;
+            }
+
+            const formData = new FormData();
+            formData.append('title', document.getElementById('title').value);
+            formData.append('description', document.getElementById('description').value);
+            formData.append('category_id', selectedCategory);
+            formData.append('citizen_name', document.getElementById('citizenName').value);
+            formData.append('citizen_email', document.getElementById('citizenEmail').value);
+            formData.append('citizen_phone', document.getElementById('citizenPhone').value);
+            formData.append('address', document.getElementById('address').value);
+
+            if (selectedLocation) {
+                formData.append('latitude', selectedLocation.lat);
+                formData.append('longitude', selectedLocation.lng);
+            }
+
+            const photoFile = document.getElementById('photoInput').files[0];
+            if (photoFile) {
+                formData.append('photo', photoFile);
+            }
+
+            try {
+                const response = await fetch(`${API_BASE}/complaints/`, {
+                    method: 'POST',
+                    body: formData
+                });
+
+                if (response.ok) {
+                    const data = await response.json();
+                    showSuccess(`Complaint submitted successfully! Reference: ${data.reference_number}`);
+                    document.getElementById('complaintForm').reset();
+                    selectedCategory = null;
+                    selectedLocation = null;
+                    if (marker) map.removeLayer(marker);
+                    document.getElementById('photoPreview').style.display = 'none';
+                    document.querySelectorAll('.category-btn').forEach(btn => btn.classList.remove('active'));
+                } else {
+                    showError('Failed to submit complaint. Please try again.');
+                }
+            } catch (error) {
+                showError('Network error. Please check your connection.');
+            }
+        });
+
+        function showError(message) {
+            const errorDiv = document.getElementById('errorMessage');
+            errorDiv.textContent = message;
+            errorDiv.style.display = 'block';
+            setTimeout(() => errorDiv.style.display = 'none', 5000);
+        }
+
+        function showSuccess(message) {
+            const successDiv = document.getElementById('successMessage');
+            successDiv.textContent = message;
+            successDiv.style.display = 'block';
+            setTimeout(() => successDiv.style.display = 'none', 8000);
+        }
+
+        // Initialize
+        initMap();
+        loadCategories();
+    </script>
+</body>
+
+</html>

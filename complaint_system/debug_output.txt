@@ -1,0 +1,9 @@
+Serialized 8 records.
+User: Satvik | Staff: False | DeptUser: False | Dept: ''
+User: admin | Staff: True | DeptUser: False | Dept: ''
+User: AB | Staff: False | DeptUser: True | Dept: 'Electricity Department'
+User: satvikrokade | Staff: False | DeptUser: True | Dept: 'Electricity Department'
+User: satvik | Staff: False | DeptUser: True | Dept: 'Electricity Department'
+User: SATVIK | Staff: False | DeptUser: False | Dept: 'ADMIN STAFF'
+User: sr | Staff: False | DeptUser: False | Dept: 'ADMIN STAFF'
+User: ab | Staff: False | DeptUser: False | Dept: 'ADMIN STAFF'

@@ -1,0 +1,135 @@
+{% extends 'base.html' %}
+
+{% block title %}Welcome - Municipal Complaint System{% endblock %}
+
+{% block extra_css %}
+<style>
+    .hero {
+        text-align: center;
+        color: white;
+        padding: 60px 20px;
+    }
+
+    .hero h1 {
+        font-size: 3rem;
+        margin-bottom: 20px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    .hero p {
+        font-size: 1.3rem;
+        margin-bottom: 40px;
+        opacity: 0.95;
+    }
+
+    .features {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 30px;
+        margin-top: 40px;
+    }
+
+    .feature-card {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        border-radius: 20px;
+        padding: 30px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s;
+    }
+
+    .feature-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .feature-icon {
+        font-size: 3rem;
+        margin-bottom: 15px;
+    }
+
+    .feature-card h3 {
+        color: #667eea;
+        margin-bottom: 10px;
+    }
+
+    .feature-card p {
+        color: #666;
+        line-height: 1.6;
+    }
+
+    .cta-buttons {
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+        margin-top: 30px;
+    }
+
+    .cta-buttons .btn {
+        font-size: 1.1rem;
+        padding: 15px 40px;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="hero">
+    <h1>🏛️ Welcome to Municipal Complaint System</h1>
+    <p>Report issues, track progress, and help build a better community</p>
+
+    <div class="cta-buttons" id="ctaButtons">
+        <a href="/login/" class="btn btn-secondary">Login</a>
+        <a href="/register/" class="btn btn-primary">Get Started</a>
+    </div>
+</div>
+
+<div class="features">
+    <div class="feature-card">
+        <div class="feature-icon">📝</div>
+        <h3>Easy Reporting</h3>
+        <p>Submit complaints with photos and location in minutes</p>
+    </div>
+
+    <div class="feature-card">
+        <div class="feature-icon">📍</div>
+        <h3>Location Tracking</h3>
+        <p>Pin exact location of issues with interactive maps</p>
+    </div>
+
+    <div class="feature-card">
+        <div class="feature-icon">🔔</div>
+        <h3>Real-time Updates</h3>
+        <p>Get notified about status changes and resolutions</p>
+    </div>
+
+    <div class="feature-card">
+        <div class="feature-icon">📊</div>
+        <h3>Transparent Process</h3>
+        <p>Track your complaint from submission to resolution</p>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    // Update CTA buttons based on auth status
+    async function updateCTA() {
+        try {
+            const response = await fetch('/api/auth/check/');
+            const data = await response.json();
+            const ctaButtons = document.getElementById('ctaButtons');
+
+            if (data.authenticated) {
+                const user = data.user;
+                const dashboardUrl = user.is_staff ? '/admin-dashboard/' : '/dashboard/';
+                ctaButtons.innerHTML = `
+                    <a href="${dashboardUrl}" class="btn btn-primary">Go to Dashboard</a>
+                `;
+            }
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    }
+
+    updateCTA();
+</script>
+{% endblock %}
